@@ -48,4 +48,11 @@ public class Library {
         }
         return recursiveSearch(items, title, index + 1);
     }
+
+    public List<Item> streamSearch(String title) {
+        return items.stream()
+                .filter(item -> item.getTitle().equalsIgnoreCase(title))
+                .distinct()
+                .toList();
+    }
 }
