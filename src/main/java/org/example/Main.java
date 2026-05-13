@@ -3,10 +3,17 @@ package org.example;
 import org.example.domain.*;
 import org.example.exceptions.BorrowLimitException;
 import org.example.exceptions.ItemNotAvailableException;
+import org.example.util.CSVLoader;
+import org.example.util.Constants;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
+
+        List<Item> items = CSVLoader.loadBooks(Constants.BOOKS_CSV_PATH);
+        List<User> users = CSVLoader.loadUsers(Constants.USERS_CSV_PATH);
 
         Student student = new Student("Alice");
         Teacher teacher = new Teacher("Bob");
