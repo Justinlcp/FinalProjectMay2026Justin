@@ -12,4 +12,10 @@ public class LibraryService {
                 .sorted(Comparator.comparing(Item::getTitle))
                 .toList();
     }
+
+    public List<Item> sortItemsByStatus(List<Item> items) {
+        return items.stream()
+                .sorted(Comparator.comparing(item -> item.getStatus().name()))
+                .toList();
+    }
 }
