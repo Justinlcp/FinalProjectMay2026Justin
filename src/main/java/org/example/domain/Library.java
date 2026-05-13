@@ -20,4 +20,3 @@ public class Library {
         users.add(user);
     }
 }
-}
