@@ -38,4 +38,14 @@ public class Library {
         item.setStatus(ItemStatus.IN_STORE);
         user.getBorrowedItems().remove(item);
     }
+
+    public Item recursiveSearch(List<Item> items, String title, int index) {
+        if (index >= items.size()) {
+            return null;
+        }
+        if (items.get(index).getTitle().equalsIgnoreCase(title)) {
+            return items.get(index);
+        }
+        return recursiveSearch(items, title, index + 1);
+    }
 }
