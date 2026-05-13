@@ -11,4 +11,13 @@ public class Library {
         this.items = new ArrayList<>();
         this.users = new ArrayList<>();
     }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+}
 }
