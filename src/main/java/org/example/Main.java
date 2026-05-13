@@ -34,5 +34,8 @@ public class Main {
         } catch (BorrowLimitException | ItemNotAvailableException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+        System.out.println("Items loaded: " + library.getItems().size());
+        System.out.println("Users loaded: " + library.getUsers().size());
     }
 }
