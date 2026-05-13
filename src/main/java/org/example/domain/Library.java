@@ -1,5 +1,8 @@
 package org.example.domain;
 
+import org.example.exceptions.BorrowLimitException;
+import org.example.exceptions.ItemNotAvailableException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,5 +21,16 @@ public class Library {
 
     public void addUser(User user) {
         users.add(user);
+    }
+
+    public void borrowItem(User user, Item item) throws BorrowLimitException, ItemNotAvailableException {
+        if (item.getStatus() == ItemStatus.BORROWED) {
+            throw new ItemNotAvailableException("Item is not available for borrowing.");
+        }
+        if (user.getBorrowedItems().size() >= user.getBorrowLimit()) {
+            throw new BorrowLimitException("Borrow limit reached for user: " + user.getName());
+        }
+        item.setStatus(ItemStatus.BORROWED);
+        user.getBorrowedItems().add(item);
     }
 }
