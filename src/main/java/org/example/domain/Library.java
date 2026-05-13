@@ -33,4 +33,9 @@ public class Library {
         item.setStatus(ItemStatus.BORROWED);
         user.getBorrowedItems().add(item);
     }
+
+    public void returnItem(User user, Item item) {
+        item.setStatus(ItemStatus.IN_STORE);
+        user.getBorrowedItems().remove(item);
+    }
 }
