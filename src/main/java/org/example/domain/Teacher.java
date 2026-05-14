@@ -5,6 +5,10 @@ public class Teacher extends User {
         super(name);
     }
 
+    /**
+     * Returns the borrow limit for a teacher
+     * @return 10 as the maximum number of items a teacher can borrow
+     */
     @Override
     public int getBorrowLimit() {
         return 10;
