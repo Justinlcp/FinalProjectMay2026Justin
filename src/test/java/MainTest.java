@@ -90,4 +90,18 @@ public class MainTest {
         boolean actual = Validation.isValidISBN("12345");
         Assertions.assertFalse(actual);
     }
+
+    @Test
+    @DisplayName("Valid non-empty string")
+    void testIsNotEmpty1() {
+        boolean actual = Validation.isNotEmpty("hello");
+        Assertions.assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("Invalid empty string")
+    void testIsNotEmpty2() {
+        boolean actual = Validation.isNotEmpty("");
+        Assertions.assertFalse(actual);
+    }
 }
