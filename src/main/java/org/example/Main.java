@@ -15,6 +15,9 @@ public class Main {
         List<Item> items = CSVLoader.loadBooks(Constants.BOOKS_CSV_PATH);
         List<User> users = CSVLoader.loadUsers(Constants.USERS_CSV_PATH);
 
+        items.forEach(library::addItem);
+        users.forEach(library::addUser);
+
         Student student = new Student("Alice");
         Teacher teacher = new Teacher("Bob");
 
@@ -34,6 +37,12 @@ public class Main {
         } catch (BorrowLimitException | ItemNotAvailableException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+
+        Admin admin = new Admin("Charlie");
+        admin.generateReport(library.getItems());
+        admin.backupItems(library.getItems(), Constants.BOOKS_CSV_PATH);
+        admin.backupUsers(library.getUsers(), Constants.USERS_CSV_PATH);
 
         System.out.println("Items loaded: " + library.getItems().size());
         System.out.println("Users loaded: " + library.getUsers().size());
