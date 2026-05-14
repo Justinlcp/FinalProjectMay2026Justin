@@ -90,3 +90,6 @@ JUnit 5 test methods included for:
 * Exception handling
 * Search methods
 * Validation methods
+
+Conclusion
+This project demonstrates practical uses of many concepts seen during the class Object-Oriented Programming. It emphasizes clean class design, inheritance, polymorphism, exception handling, file I/O and JUnit testing.
