@@ -1,6 +1,7 @@
 import org.example.domain.*;
 import org.example.exceptions.BorrowLimitException;
 import org.example.exceptions.ItemNotAvailableException;
+import org.example.util.Validation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -74,5 +75,19 @@ public class MainTest {
         Book extraBook = new Book("Extra Book", ItemStatus.IN_STORE, "1234567890999", "Author", "Genre");
         library.addItem(extraBook);
         Assertions.assertThrows(BorrowLimitException.class, () -> library.borrowItem(student, extraBook));
+    }
+
+    @Test
+    @DisplayName("Valid ISBN with 13 digits")
+    void testValidISBN1() {
+        boolean actual = Validation.isValidISBN("1234567890123");
+        Assertions.assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("Invalid ISBN with less than 13 digits")
+    void testValidISBN2() {
+        boolean actual = Validation.isValidISBN("12345");
+        Assertions.assertFalse(actual);
     }
 }
