@@ -17,6 +17,10 @@ public class Admin extends User implements Reportable {
         return 0;
     }
 
+    /**
+     * Generates a report of all items in the library
+     * @param items the list of items to report on
+     */
     @Override
     public void generateReport(List<Item> items) {
         System.out.println("--- Library Report ---");
@@ -25,6 +29,11 @@ public class Admin extends User implements Reportable {
         }
     }
 
+    /**
+     * Backs up all items to a CSV file
+     * @param items the list of items to back up
+     * @param path the path of the CSV file
+     */
         public void backupItems(List<Item> items, String path) {
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
                 items.forEach(item -> {
@@ -41,6 +50,11 @@ public class Admin extends User implements Reportable {
             }
         }
 
+    /**
+     * Backs up all users to a CSV file
+     * @param users the list of users to back up
+     * @param path the path of the CSV file
+     */
     public void backupUsers(List<User> users, String path) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
             users.forEach(user -> {
