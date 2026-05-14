@@ -13,3 +13,12 @@ System Capabilities
 * Loading and backing up data using CSV files
 * Exception handling for invalid operations
 * Input validation
+
+Class Overview and Responsibilities
+
+Item
+Represents an abstract library item.
+Responsibilities:
+* Stores the item ID, title and status
+* Automatically generates item IDs
+* Defines the base structure for all library items
