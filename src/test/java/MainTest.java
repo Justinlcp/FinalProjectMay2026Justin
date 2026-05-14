@@ -58,4 +58,21 @@ public class MainTest {
         Teacher teacher = new Teacher("Bob");
         Assertions.assertThrows(ItemNotAvailableException.class, () -> library.borrowItem(teacher, book));
     }
+
+    @Test
+    @DisplayName("Borrowing beyond limit throws BorrowLimitException")
+    void testBorrowLimitException1() {
+        for (int i = 0; i < 5; i++) {
+            Book b = new Book("Book " + i, ItemStatus.IN_STORE, "123456789000" + i, "Author", "Genre");
+            library.addItem(b);
+            try {
+                library.borrowItem(student, b);
+            } catch (Exception e) {
+                Assertions.fail("Should not throw yet");
+            }
+        }
+        Book extraBook = new Book("Extra Book", ItemStatus.IN_STORE, "1234567890999", "Author", "Genre");
+        library.addItem(extraBook);
+        Assertions.assertThrows(BorrowLimitException.class, () -> library.borrowItem(student, extraBook));
+    }
 }
