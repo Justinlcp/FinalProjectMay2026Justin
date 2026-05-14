@@ -118,4 +118,16 @@ public class MainTest {
         Item result = library.recursiveSearch(library.getItems(), "Unknown Book", 0);
         Assertions.assertNull(result);
     }
+
+    @Test
+    @DisplayName("Stream search finds item by title")
+    void testStreamSearch1() {
+        Assertions.assertEquals(1, library.streamSearch("Java Book").size());
+    }
+
+    @Test
+    @DisplayName("Stream search returns empty list when item not found")
+    void testStreamSearch2() {
+        Assertions.assertEquals(0, library.streamSearch("Unknown Book").size());
+    }
 }
