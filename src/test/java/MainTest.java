@@ -3,6 +3,7 @@ import org.example.domain.ItemStatus;
 import org.example.domain.Library;
 import org.example.domain.Student;
 import org.example.exceptions.BorrowLimitException;
+import org.example.exceptions.ItemNotAvailableException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,5 +36,21 @@ public class MainTest {
     void testBorrowItem2() throws BorrowLimitException, ItemNotAvailableException {
         library.borrowItem(student, book);
         Assertions.assertEquals(1, student.getBorrowedItems().size());
+    }
+
+    @Test
+    @DisplayName("Student successfully returns a book")
+    void testReturnItem1() throws BorrowLimitException, ItemNotAvailableException {
+        library.borrowItem(student, book);
+        library.returnItem(student, book);
+        Assertions.assertEquals(ItemStatus.IN_STORE, book.getStatus());
+    }
+
+    @Test
+    @DisplayName("Borrowed items list decreases after returning")
+    void testReturnItem2() throws BorrowLimitException, ItemNotAvailableException {
+        library.borrowItem(student, book);
+        library.returnItem(student, book);
+        Assertions.assertEquals(0, student.getBorrowedItems().size());
     }
 }
