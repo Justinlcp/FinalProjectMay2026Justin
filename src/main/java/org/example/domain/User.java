@@ -21,5 +21,9 @@ public abstract class User {
         this.borrowedItems = new ArrayList<>();
     }
 
+    /**
+     * Returns the borrow limit of the user
+     * @return the maximum number of items the user can borrow
+     */
     public abstract int getBorrowLimit();
 }
