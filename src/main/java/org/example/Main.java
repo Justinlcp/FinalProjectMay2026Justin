@@ -43,8 +43,5 @@ public class Main {
         admin.generateReport(library.getItems());
         admin.backupItems(library.getItems(), Constants.BOOKS_CSV_PATH);
         admin.backupUsers(library.getUsers(), Constants.USERS_CSV_PATH);
-
-        System.out.println("Items loaded: " + library.getItems().size());
-        System.out.println("Users loaded: " + library.getUsers().size());
     }
 }
