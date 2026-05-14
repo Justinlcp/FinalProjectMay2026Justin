@@ -40,5 +40,20 @@ public class Admin extends User implements Reportable {
                 System.out.println("Error backing up items: " + e.getMessage());
             }
         }
+
+    public void backupUsers(List<User> users, String path) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+            users.forEach(user -> {
+                try {
+                    bw.write(user.getName() + "," + user.getClass().getSimpleName().toUpperCase());
+                    bw.newLine();
+                } catch (IOException e) {
+                    System.out.println("Error backing up user: " + e.getMessage());
+                }
+            });
+            System.out.println("Users backup successful.");
+        } catch (IOException e) {
+            System.out.println("Error backing up users: " + e.getMessage());
+        }
     }
 }
