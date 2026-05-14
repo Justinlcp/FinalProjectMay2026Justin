@@ -104,4 +104,18 @@ public class MainTest {
         boolean actual = Validation.isNotEmpty("");
         Assertions.assertFalse(actual);
     }
+
+    @Test
+    @DisplayName("Recursive search finds item by title")
+    void testRecursiveSearch1() {
+        Item result = library.recursiveSearch(library.getItems(), "Java Book", 0);
+        Assertions.assertNotNull(result);
+    }
+
+    @Test
+    @DisplayName("Recursive search returns null when item not found")
+    void testRecursiveSearch2() {
+        Item result = library.recursiveSearch(library.getItems(), "Unknown Book", 0);
+        Assertions.assertNull(result);
+    }
 }
