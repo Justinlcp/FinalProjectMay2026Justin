@@ -1,7 +1,4 @@
-import org.example.domain.Book;
-import org.example.domain.ItemStatus;
-import org.example.domain.Library;
-import org.example.domain.Student;
+import org.example.domain.*;
 import org.example.exceptions.BorrowLimitException;
 import org.example.exceptions.ItemNotAvailableException;
 import org.junit.jupiter.api.Assertions;
@@ -52,5 +49,13 @@ public class MainTest {
         library.borrowItem(student, book);
         library.returnItem(student, book);
         Assertions.assertEquals(0, student.getBorrowedItems().size());
+    }
+
+    @Test
+    @DisplayName("Borrowing an already borrowed item throws ItemNotAvailableException")
+    void testBorrowAlreadyBorrowedItem1() throws BorrowLimitException, ItemNotAvailableException {
+        library.borrowItem(student, book);
+        Teacher teacher = new Teacher("Bob");
+        Assertions.assertThrows(ItemNotAvailableException.class, () -> library.borrowItem(teacher, book));
     }
 }
