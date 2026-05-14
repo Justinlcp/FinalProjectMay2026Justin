@@ -11,6 +11,11 @@ import java.util.Optional;
 
 public class CSVLoader {
 
+    /**
+     * Loads books from a CSV file
+     * @param path the path of the CSV file
+     * @return a list of items loaded from the file
+     */
     public static List<Item> loadBooks(String path) {
         List<Item> items = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -25,6 +30,11 @@ public class CSVLoader {
         return items;
     }
 
+    /**
+     * Loads users from a CSV file
+     * @param path the path of the CSV file
+     * @return a list of users loaded from the file
+     */
     public static List<User> loadUsers(String path) {
         List<User> users = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
